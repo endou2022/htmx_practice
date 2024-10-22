@@ -1,5 +1,5 @@
 ## 本ソフトは何か
-[Qiita](https://qiita.com/)で公開している、「htmxを使ってみた」の練習プログラムです。
+[Qiita](https://qiita.com/)で公開している、「[htmxを使ってみた](https://qiita.com/Final1900/items/49a8ac6f27a2427f6306)」の練習プログラムです。
 詳しくは記事を見てください。
 
 ## ライセンス
