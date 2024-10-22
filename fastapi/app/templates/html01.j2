@@ -1,0 +1,32 @@
+{#- 詳細ダイアローグの中身 #}
+{%- autoescape True %}
+<table style="width:27rem">
+	<tr>
+		<th>名称</th>
+		<td>{{institution['名称']}}</td>
+	</tr>
+	<tr>
+		<th>ヨミガナ</th>
+		<td>{{institution['名称_カナ']}}</td>
+	</tr>
+	<tr>
+		<th>住所</th>
+		<td>{{institution['住所']}}</td>
+	</tr>
+	<tr>
+		<th>説明</th>
+		<td>{{institution['説明']}}</td>
+	</tr>
+	<tr>
+		<th>URL</th>
+		<td>{{institution['URL']}}</td>
+	</tr>
+	<tr>
+		<th>備考</th>
+		<td>{{institution['備考']}}</td>
+	</tr>
+</table>
+<div class="right_button">
+	<input type="button" value="閉じる" onclick="close_dialog()" autofocus>
+</div>
+{%- endautoescape %}

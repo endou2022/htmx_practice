@@ -1,0 +1,13 @@
+{#- 追加、変更後のデータ #}
+{%- autoescape True %}
+<tr id="inst_{{institution['ID']}}" hx-on::before-swap="change_institution(event)">
+	<td class="pseude_link" hx-get="/view_institution/{{institution['ID']}}" hx-target="#detail" hx-on::after-request="show_dialog()">{{institution['名称']}}</td>
+	<!-- <td>{{institution['名称_カナ']}}</td> -->
+	<td>{{institution['住所']}}</td>
+	<td>{{institution['説明']}}</td>
+	<td>{{institution['URL']}}</td>
+	<td>{{institution['備考']}}</td>
+	<td class="pseude_link" hx-get="/edit_institution/{{institution['ID']}}" hx-target="#detail" hx-on::after-request="show_dialog()">*</td>
+	<td class="pseude_link" hx-delete="/del_institution/{{institution['ID']}}/{{institution['更新回数']}}" hx-target="closest tr" hx-swap="delete swap:1s" hx-confirm="データを削除します。削除したデータを戻すことはできません。">x</td>
+</tr>
+{%- endautoescape %}

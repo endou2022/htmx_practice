@@ -1,0 +1,54 @@
+{#- メイン画面 #}
+{%- autoescape True %}
+<main>
+	<table class="striped_pattern">
+		<caption>{{table_caption}}</caption>
+		<thead>
+			<tr>
+				<th>名称</th>
+				<!-- <th>ヨミガナ</th> -->
+				<th>住所</th>
+				<th>説明</th>
+				<th>URL</th>
+				<th>備考</th>
+				<th>編集</th>
+				<th>削除</th>
+			</tr>
+		</thead>
+
+		<tbody>
+			{% for institution in institutions -%}
+			<tr id="inst_{{institution['ID']}}" hx-on::before-swap="change_institution(event)">
+				<td class="pseude_link" hx-get="/view_institution/{{institution['ID']}}" hx-target="#detail" hx-on::after-request="show_dialog()">{{institution['名称']}}</td>
+				<!-- <td>{{institution['名称_カナ']}}</td> -->
+				<td>{{institution['住所']}}</td>
+				<td>{{institution['説明']}}</td>
+				<td>{{institution['URL']}}</td>
+				<td>{{institution['備考']}}</td>
+				<td class="pseude_link" hx-get="/edit_institution/{{institution['ID']}}" hx-target="#detail" hx-on::after-request="show_dialog()">*</td>
+				<td class="pseude_link" hx-delete="/del_institution/{{institution['ID']}}/{{institution['更新回数']}}" hx-target="closest tr" hx-swap="delete swap:1s" hx-confirm="データを削除します。削除したデータを戻すことはできません。">x</td>
+			</tr>
+			{% endfor -%}
+			<tr id="add_btn" hx-on::before-swap="change_institution(event)">
+				<td colspan="7">
+					<input type="button" value="施設追加" hx-get="/new_institution" hx-target="#detail" hx-on::after-request="show_dialog()">
+					<form action="/reload_institution" method="get" hx-boost="true" style="display: inline">
+						<input type="submit" value="データ再読み込み" title="施設を追加した後に実行すると、名称のヨミガナ順に並び替えます">
+					</form>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<div class="msgbox message">
+		出典：高山市 オープンデータサイト<br>
+		https://www.city.takayama.lg.jp/shisei/1005252/1010628.html (2024/04)
+	</div>
+</main>
+
+<aside>
+	<!-- 詳細ダイアローグ 中身はAjaxで書き換える -->
+	<dialog id='detail'>
+	</dialog>
+</aside>
+
+{%- endautoescape %}

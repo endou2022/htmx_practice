@@ -1,0 +1,18 @@
+{#- HTMLのヘッド #}
+{%- autoescape True %}
+<!doctype html>
+<html lang="ja">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="author" content="Y.ENDOU">
+	<meta name="description" content={{description}}>
+	<meta name="keywords" content="FastAPI , Jinja2 , htmx , python">
+	<title>{{page_title}}</title>
+	<link rel="icon" href="/static/image/favicon.ico">
+	<link rel="stylesheet" href="/static/css/p90.css">
+	<script src="/static/js/htmx-2.0.2.js"></script><!-- htmx はver.2.0.2 限定 -->
+	<!-- https://unpkg.com/browse/htmx.org@2.0.2/ (2024/10/01) -->
+	<script src="/static/js/p00.js"></script>
+</head>
+{%- endautoescape %}

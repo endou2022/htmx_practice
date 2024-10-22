@@ -1,0 +1,52 @@
+{#- 更新ダイアローグの中身 #}
+{%- autoescape True %}
+<form hx-put="/update_institution" hx-target="#inst_{{institution['ID']}}" hx-swap="outerHTML">
+	<table style="width:27rem">
+		<tr>
+			<th>ID</th>
+			<td><input type="text" name="ID" readonly value="{{institution['ID']}}"></td>
+		</tr>
+		<tr>
+			<th>名称</th>
+			<td><input type="text" required name="name" value="{{institution['名称']}}"></td>
+		</tr>
+		<tr>
+			<th>ヨミガナ</th>
+			<td><input type="text" required name="kana" value="{{institution['名称_カナ']}}"></td>
+		</tr>
+		<tr>
+			<th>住所</th>
+			<td><input type="text" required name="addr" value="{{institution['住所']}}"></td>
+		</tr>
+		<tr>
+			<th>説明</th>
+			<td><input type="text" name="exp" value="{{institution['説明']}}"></td>
+		</tr>
+		<tr>
+			<th>URL</th>
+			<td><input type="url" name="url" value="{{institution['URL']}}"></td>
+		</tr>
+		<tr>
+			<th>備考</th>
+			<td><input type="text" name="note" value="{{institution['備考']}}"></td>
+		</tr>
+		<tr>
+			<th>登録日</th>
+			<td><input type="text" name="record_at" readonly value="{{institution['登録日']}}"></td>
+		</tr>
+		<tr>
+			<th>更新日時</th>
+			<td><input type="text" name="update_at" readonly value="{{institution['更新日時']}}"></td>
+		</tr>
+		<tr>
+			<th>更新回数</th>
+			<td><input type="text" name="version" readonly value="{{institution['更新回数']}}"></td>
+		</tr>
+	</table>
+	<div class="right_button">
+		<input type="reset" value="リセット">
+		<input type="submit" value="　変更　">
+		<input type="button" value="閉じる" onclick="close_dialog()" autofocus>
+	</div>
+</form>
+{%- endautoescape %}

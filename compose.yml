@@ -1,0 +1,68 @@
+version: '3'
+
+services:
+  fastapi:
+    build:
+      context: "./fastapi"
+      dockerfile: "Dockerfile"
+    container_name: practice_fastapi
+    restart: always
+    depends_on:
+      - mariadb
+    ports:
+      - 8001:8000
+    volumes:
+      - ./fastapi/app:/app
+    environment:
+      - TZ=Asia/Tokyo
+      - ENVIRON
+    # https://qiita.com/qualitia_cdev/items/23206b3aacb291b5ded2 (2024/10/01)
+    logging:
+      driver: json-file
+      options:
+        max-file: "1"
+        max-size: 10m
+
+  mariadb:
+    build:
+      context: ./mariadb
+      dockerfile: Dockerfile
+    container_name: practice_mariadb
+    restart: always
+    volumes:
+      - "./mariadb/initdb.d:/docker-entrypoint-initdb.d"
+    #    ports:
+    #      - 13306:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=practice
+      - MYSQL_USER=practice
+      - MYSQL_PASSWORD=practice
+      - TZ=Asia/Tokyo
+    logging:
+      driver: json-file
+      options:
+        max-file: "1"
+        max-size: 10m
+
+  phpmyadmin:
+    build:
+      context: ./phpmyadmin
+      dockerfile: Dockerfile
+    container_name: practice_phpmyadmin
+    restart: always
+    environment:
+      - PMA_ARBITRARY=1
+      - PMA_HOST=mariadb
+      - PMA_USER=root
+      - PMA_PASSWORD=root
+      - TZ=Asia/Tokyo
+    depends_on:
+      - mariadb
+    ports:
+      - 4001:80
+    logging:
+      driver: json-file
+      options:
+        max-file: "1"
+        max-size: 10m

@@ -1,0 +1,36 @@
+{#- 追加ダイアローグの中身 #}
+{%- autoescape True %}
+<form hx-post="/add_institution" hx-target="#add_btn" hx-swap="beforebegin">
+	<input type="hidden" name="ID" value="-1">
+	<table style="width:27rem">
+		<tr>
+			<th>名称</th>
+			<td><input type="text" required name="name" value=""></td>
+		</tr>
+		<tr>
+			<th>ヨミガナ</th>
+			<td><input type="text" required name="kana" value=""></td>
+		</tr>
+		<tr>
+			<th>住所</th>
+			<td><input type="text" required name="addr" value=""></td>
+		</tr>
+		<tr>
+			<th>説明</th>
+			<td><input type="text" name="exp" value=""></td>
+		</tr>
+		<tr>
+			<th>URL</th>
+			<td><input type="url" name="url" value=""></td>
+		</tr>
+		<tr>
+			<th>備考</th>
+			<td><input type="text" name="note" value=""></td>
+		</tr>
+	</table>
+	<div class="right_button">
+		<input type="submit" value="　追加　">
+		<input type="button" value="閉じる" onclick="close_dialog()" autofocus>
+	</div>
+</form>
+{%- endautoescape %}

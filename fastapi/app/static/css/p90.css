@@ -1,0 +1,164 @@
+/*------------------------------------*/
+/* 共通 */
+/* カスタムプロパティ */
+:root {
+	--color-main: #03045e;				/*テキスト*/
+	--color-back: white;				/*背景*/
+	--color-border: #023e8a;			/*境界線*/
+	--color-th-back: lightsteelblue ; 	/*<th>の背景*/
+	--color-table-even-back: lavender ;	/*<tbody>偶数行の背景*/
+	--color-invalid: red;				/*エラー入力*/
+}
+/*------------------------------------*/
+body {
+	margin: 0 0 0 0.5rem;
+	padding: 0;
+	font-family: Meiryo;		/* @link https://willcloud.jp/knowhow/font-family/ (2024/10/01) */
+	color: var(--color-main);
+	background-color: var(--color-back);
+}
+
+main {
+	margin: 1rem;
+}
+
+footer {
+	display: flex;
+	justify-content: flex-end;
+	font-size: 0.8em;
+	margin-top: 0.5rem;
+	margin-right: 1rem;
+	margin-bottom: 1rem;
+	padding-right: 1rem;
+	border-top: 2px dotted var(--color-border);
+	border-bottom: 2px dotted var(--color-border);
+}
+
+h1 {
+	padding: .1rem .2rem;
+	margin: 0;
+	color: white;
+	border-left: 10px solid var(--color-title-flag);
+	background-color: var(--color-title-back);
+	border-radius: 5px;
+}
+
+table {
+	border-collapse: collapse;
+	white-space: nowrap;
+}
+
+caption {
+	font-weight: bold;
+	font-size: large;
+	text-align: left;
+}
+
+tr.htmx-swapping {
+  opacity: 0;
+  transition: opacity 1s ease-out;
+}
+
+th , td {
+	border: 1px solid var(--color-border);
+	font-size: small;
+	padding: 0.1rem 0.5rem 0.1rem 0.5rem;
+}
+
+th {
+	background-color: var(--color-th-back);
+}
+
+.striped_pattern tbody tr:nth-child(even) {
+	background-color: var(--color-table-even-back);
+}
+
+hr {
+	margin : 0.5rem;
+	height: 1px;
+	background-color: var(--color-border);
+	border: none;
+}
+
+input {
+	border-radius: 5px;
+}
+
+input[type="text"] {
+	width: 20rem;
+}
+
+input[type="url"] {
+	width: 20rem;
+}
+
+input:valid {
+	border: 1px solid var(--color-border);
+}
+
+input:invalid {
+	border: 1px solid var(--color-invalid);
+}
+
+input[readonly], textarea[readonly], select[readonly] {
+	border: 1px solid var(--color-border);
+	background: lightgray;
+}
+/*------------------------------------*/
+.pseude_link {
+	cursor: pointer;
+	text-decoration: underline;
+}
+
+.right_button {
+	text-align: right;
+	margin-top: 0.5rem
+}
+/*------------------------------------*/
+/* 詳細ダイアローグ */
+#detail {
+	padding: 0.5rem;
+	width: 27rem;
+	border: 1px solid var(--color-main);
+	border-radius: 7px;
+}
+
+#detail th {
+	text-align: left;
+}
+
+dialog::backdrop {
+	backdrop-filter: blur(1px);
+	background-color: rgba(0, 0, 200, 0.1);
+}
+/*------------------------------------*/
+.msgbox {
+	padding: .5rem .8rem;
+	margin: 1rem 1rem 0 0;
+	border-radius: 5px;
+	border: dotted 1px;
+}
+
+.error, .alert {
+	font-weight: bold;
+	color: red;
+	background: #fee;
+}
+
+.warning, .caution {
+	color: orange;
+	background: lightyellow;
+}
+
+.notice, .attention {
+	color: blue;
+	background: lavender;
+	font-size:small;
+}
+
+.message {
+	color: green;
+	background: #efe;
+	font-size:small;
+}
+/*------------------------------------*/
