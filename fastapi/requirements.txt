@@ -3,3 +3,4 @@ uvicorn[standard]
 jinja2
 mysql-connector-python
 python-multipart
+protobuf>=4.25.8 # not directly required, pinned by Snyk to avoid a vulnerability
